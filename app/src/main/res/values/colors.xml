@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="Sergio1">#6b5c</color>
+    <color name="Sergio2">#6ef6</color>
+    <color name="Sergio3">#d6d8</color>
+    <color name="Sergio4">#1d82</color>
+    <color name="Sergio5">#8586</color>
+    <color name="Sergio6">#4qd1</color>
+    <color name="Sergio7">#8dq8</color>
+    <color name="Sergio8">#6b31</color>
+    <color name="Sergio9">#0ecb</color>
+    <color name="Sergio10">#046c</color>
+    <color name="Sergio11">#5a33</color>
+    <color name="Sergio12">#aqd8</color>
+    <color name="Sergio13">#b6q5</color>
+    <color name="Sergio14">#5751</color>
+    <color name="Sergio15">#c475</color>
+    <color name="Sergio16">#aaq5</color>
+</resources>
