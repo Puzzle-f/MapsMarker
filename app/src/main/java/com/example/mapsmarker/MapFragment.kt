@@ -43,6 +43,14 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationListener {
     private var location: Location? = null
     private var locationManager: LocationManager? = null
 
+
+
+    fun initButtonRemoveMarker(marker: Marker){
+        binding.removeMarker.setOnClickListener {
+            marker.remove()
+        }
+    }
+
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
         val initialPlace = LatLng(52.52000659999999, 13.404953999999975)
@@ -60,12 +68,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationListener {
             )
         }
         activateMyLocation(googleMap)
-    }
-
-    fun initButtonRemoveMarker(marker: Marker){
-        binding.removeMarker.setOnClickListener {
-            marker.remove()
-        }
     }
 
     private fun activateMyLocation(googleMap: GoogleMap) {
