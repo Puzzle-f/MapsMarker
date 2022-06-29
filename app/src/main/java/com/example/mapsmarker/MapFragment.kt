@@ -18,6 +18,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.mapsmarker.databinding.FragmentMarkersBinding
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -41,6 +42,43 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationListener {
     private var canGetLocation = false
     private var location: Location? = null
     private var locationManager: LocationManager? = null
+
+    private val callback = OnMapReadyCallback { googleMap ->
+        map = googleMap
+        val initialPlace = LatLng(52.52000659999999, 13.404953999999975)
+        googleMap.addMarker(
+            MarkerOptions().position(initialPlace).title(getString(R.string.marker_start))
+        )
+        googleMap.setOnMarkerClickListener {
+            initButtonRemoveMarker(it)
+            false
+        }
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(initialPlace))
+        googleMap.setOnMapLongClickListener { latLng ->
+            googleMap.addMarker(
+                MarkerOptions().position(latLng).title("хорошее место")
+            )
+        }
+        activateMyLocation(googleMap)
+    }
+
+    fun initButtonRemoveMarker(marker: Marker){
+        binding.removeMarker.setOnClickListener {
+            marker.remove()
+        }
+    }
+
+    private fun activateMyLocation(googleMap: GoogleMap) {
+        context?.let {
+            val isPermissionGranted =
+                ContextCompat.checkSelfPermission(it,
+                    Manifest.permission.ACCESS_FINE_LOCATION) ==
+                        PackageManager.PERMISSION_GRANTED
+            googleMap.isMyLocationEnabled = isPermissionGranted
+            googleMap.uiSettings.isMyLocationButtonEnabled = isPermissionGranted
+        }
+    }
+
 
     @SuppressLint("MissingPermission")
     private fun getLocation(): Location? {
@@ -139,7 +177,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, LocationListener {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment =
             childFragmentManager.findFragmentById(binding.map.id) as SupportMapFragment?
-        mapFragment?.getMapAsync(this)
+        mapFragment?.getMapAsync(callback)
     }
 
 

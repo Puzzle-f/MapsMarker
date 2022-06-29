@@ -22,15 +22,6 @@ class MapsActivity : AppCompatActivity() {
                 .replace(R.id.container, MapFragment.newInstance())
                 .commitNow()
         }
-/*        setSupportActionBar(binding.topAppBar)
-        binding.topAppBar.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.markers -> {
-                    true
-                }
-                else -> false
-            }
-        }*/
         try {
             if (ContextCompat.checkSelfPermission(
                     applicationContext, Manifest.permission.ACCESS_FINE_LOCATION
@@ -45,8 +36,4 @@ class MapsActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.app_bar_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
 }
